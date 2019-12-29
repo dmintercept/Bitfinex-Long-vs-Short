@@ -12,7 +12,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-t','--tpairs', nargs='+', help='Ticker pairs to check data for', required=False)
 args = parser.parse_args()
 
-
 title('The be all & end all of the finex long/short data') 
 
 # Ticker pairs
@@ -27,7 +26,6 @@ currs = get_currencies( tdata )
 query = ",f".join(currs)
 fdata = api_request("https://api.bitfinex.com/v2/tickers?symbols=f"+query)
 
-
 # Get the coin market cap data for the tickers 
 cmc_data = get_cmc_data( tdata  )
 
@@ -41,8 +39,7 @@ mdata_headers = [
 	'overall_ls_ratio', 
 	'as_percent_long', 'as_percent_short',
 	'long_funding_rate', 'short_funding_rate',
-	'long_funding_charge', 'short_funding_charge'
-]
+	'long_funding_charge', 'short_funding_charge']
 mdata = [] 
 
 # Cumulative data 
@@ -144,7 +141,6 @@ for data in tdata:
 	spacer()
 	time.sleep(2)
 
-
 # Output Margin Data table 
 table = []
 for data in mdata:
@@ -183,15 +179,9 @@ print(tabulate(table, headers=[
 		'Total Long USD Value','Total Short USD Value'
 	]))
 
-
-
-
 spacer()
 print3('Making chart visualisations...')
 make_chart( cmc_data, cdata, mdata ) 
-
-
-
 
 # Write to CSV 
 timestamp = datetime.utcnow()
@@ -201,8 +191,7 @@ print3('Writing data to csv files, timestamped: '+str(timestamp))
 
 w2csv = [ 
 	['margin data', ROOT_PATH+'/margin_data', mdata, mdata_headers],
-	['cumulative data', ROOT_PATH+'/cumulative_data', cdata, cdata_headers],
-]
+	['cumulative data', ROOT_PATH+'/cumulative_data', cdata, cdata_headers]]
 for el in w2csv:
 
 	file_exists = os.path.isfile(el[1]+'_log.csv')
@@ -230,8 +219,6 @@ for el in w2csv:
 		for row in el[2]:
 			row.insert(0, timestamp)
 			writer.writerow(row)
-
-
 
 print2('Done..')
 exit() 

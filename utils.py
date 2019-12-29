@@ -32,30 +32,25 @@ def title(txt):
 	x = '\033[93m' 
 	print(x, bold, spacerstr, txt, spacerstr,  endc)
 
-
 def error(txt, kill=0):
 	red   = '\033[91m'
 	print(red, txt, endc)
 
-###################
 # BLUE 
 def print1(txt):
 	x   = '\033[94m'
 	print(x, txt, endc)
 
-###################
 # PURPLE  
 def print2(txt):
 	x  = '\033[95m'
 	print(x, txt, endc)
 
-###################
 # CYAN 
 def print3(txt):
 	x  = '\033[96m'
 	print(x, txt, endc)
 
-###################
 # GREEN 
 def print4(txt):
 	x  = '\033[92m'
@@ -68,8 +63,6 @@ def f(num):
 		return num
 	else: 
 		return str("{:,}".format(num))
-
-
 
 def api_request(url):
 
@@ -133,7 +126,6 @@ def api_request(url):
 
 	return data
 
-
 def get_currencies( tdata ): 
 
 	# Currency : [ Preformatter, Postformatter ]
@@ -164,7 +156,6 @@ def get_currencies( tdata ):
 		currs[lpart] = add_curr(lpart)
 
 	return currs 
-
 
 def get_cmc_data( tpairs ):
 
